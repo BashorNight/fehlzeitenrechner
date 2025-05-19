@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Fehlzeitenrechner Umschulung</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>📊 Fehlzeitenrechner für Umschulung</h2>
+    <label for="start">Startdatum der Umschulung:</label>
+    <input type="date" id="start" value="2024-02-12">
+
+    <label for="ende">Enddatum der Umschulung:</label>
+    <input type="date" id="ende" value="2026-01-18">
+
+    <label for="fehltage">Bisherige Fehltage:</label>
+    <input type="number" id="fehltage" value="22">
+
+    <button onclick="berechneFehlzeiten()">Berechnen</button>
+
+    <div class="output" id="ergebnis"></div>
+  </div>
+
+  <script src="js/script.js"></script> 
+</body>
+</html>
