@@ -7,7 +7,7 @@ Das Tool basiert auf allgemein bekannten IHK-Richtwerten, insbesondere der 10 
 
 ## 🔗 Live-Demo
 
-👉 [Jetzt ausprobieren (GitHub Pages)](https://bashornight.github.io/fehlzeiten/)  
+👉 [Jetzt ausprobieren (GitHub Pages)](https://bashornight.github.io/fehlzeitenrechner/)  
 
 ---
 
