@@ -1,27 +1,30 @@
-function calculate() {
-  const startDate = new Date(document.getElementById("startDate").value);
-  const endDate = new Date(document.getElementById("endDate").value);
-  const absentDays = parseInt(document.getElementById("absentDays").value) || 0;
+  function berechneFehlzeiten() {
+      const startDatum = new Date(document.getElementById("start").value);
+      const endDatum = new Date(document.getElementById("ende").value);
+      const aktuelleFehltage = parseInt(document.getElementById("fehltage").value);
 
-  if (isNaN(startDate) || isNaN(endDate)) {
-    document.getElementById("result").innerText = "Bitte gültige Daten eingeben.";
-    return;
-  }
+      const arbeitstageProJahr = 220;
+      const tageGesamt = (endDatum - startDatum) / (1000 * 60 * 60 * 24);
+      const jahreGesamt = tageGesamt / 365;
 
-  const totalDays = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
-  const workdays = Math.floor((totalDays / 365) * 220); // Durchschnittlich 220 Arbeitstage pro Jahr
+      const arbeitstageGesamt = Math.round(jahreGesamt * arbeitstageProJahr);
+      const erlaubteFehltage = Math.floor(arbeitstageGesamt * 0.10);
+      const verbleibend = erlaubteFehltage - aktuelleFehltage;
 
-  const maxAllowed = Math.floor(workdays * 0.1);
-  const remaining = maxAllowed - absentDays;
+      let ausgabe = `
+        <strong>Gesamtdauer:</strong> ${jahreGesamt.toFixed(3)} Jahre<br>
+        <strong>Arbeitstage (geschätzt):</strong> ${arbeitstageGesamt}<br>
+        <strong>Erlaubte Fehltage (10 %):</strong> ${erlaubteFehltage}<br>
+        <strong>Deine Fehltage:</strong> ${aktuelleFehltage}<br>
+        <strong>Fehltage verbleibend:</strong> ${verbleibend >= 0 ? verbleibend : 0}
+        <br><br>
+      `;
 
-  let message = `Erlaubte Fehltage: ${maxAllowed}\n`;
-  message += `Bisherige Fehltage: ${absentDays}\n`;
+      if (verbleibend < 0) {
+        ausgabe += `<span style="color: red;">⚠️ Du hast die 10 %-Grenze überschritten. Eine Einzelfallprüfung ist wahrscheinlich nötig.</span>`;
+      } else {
+        ausgabe += `<span style="color: green;">✅ Du liegst unter 10 %. Keine Einzelfallprüfung notwendig.</span>`;
+      }
 
-  if (remaining >= 0) {
-    message += `Du darfst noch ${remaining} Tage fehlen.`;
-  } else {
-    message += `Du hast ${-remaining} Tage zu viel gefehlt – es wird eine Einzelfallprüfung nötig sein.`;
-  }
-
-  document.getElementById("result").innerText = message;
-}
+      document.getElementById("ergebnis").innerHTML = ausgabe;
+    }
