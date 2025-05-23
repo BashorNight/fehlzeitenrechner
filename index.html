@@ -1,27 +1,56 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fehlzeitenrechner Umschulung</title>
-  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
   <div class="container">
-    <h2>📊 Fehlzeitenrechner für Umschulung</h2>
-    <label for="start">Startdatum der Umschulung:</label>
-    <input type="date" id="start" value="">
+    <h2>📊 Fehlzeitenrechner für Ausbildung</h2>
+    <label>Startdatum:</label>
+    <input type="date" id="start" oninput="checkDatum('start'); berechenenBtn()" />
+    <span id="startHinweis" style="color:red; display:none;">Das Startdatum darf nicht nach dem Enddatum liegen!</span>
 
-    <label for="ende">Enddatum der Umschulung:</label>
-    <input type="date" id="ende" value="">
+    <label>Enddatum:</label>
+    <input type="date" id="ende" oninput="checkDatum('ende'); berechenenBtn()" />
+    <span id="endeHinweis" style="color:red; display:none;">Das Enddatum darf nicht vor dem Startdatum liegen!</span>
 
-    <label for="fehltage">Bisherige Fehltage:</label>
-    <input type="number" id="fehltage" value="">
+    <label>Fehltage bisher:</label>
+    <input type="number" id="fehltage" value="" oninput="berechenenBtn()" />
 
-    <button onclick="berechneFehlzeiten()">Berechnen</button>
+    <button class="btnAktivieren" id="berechenenBtn" onclick="berechneFehlzeiten()" disabled >Berechnen</button>
 
-    <div class="output" id="ergebnis"></div>
+    <div class="output" id="ergebnis" hidden="true" ></div>
+    
+    <hr>
+    
+    <form id="pdfAngaben" hidden="true" autocomplete="off" >
+      <h3>Angaben zur Person</h3>		
+      
+      <label for="name">Name der Person:</label>
+      <input type="text" id="name" placeholder="Max Mustermann" required >
+
+      <label for="traeger">Bildungsträger / Schule:</label>
+      <input type="text" id="traeger" placeholder="z. B. IBB Hamburg" required>
+
+      <label for="beruf">Berufsziel:</label>
+      <input type="text" id="beruf" placeholder="z. B. Fachinformatiker AE" required>
+
+      <label for="kammer">Zuständige Kammer:</label>
+      <input type="text" id="kammer" placeholder="z. B. IHK Hamburg" required>		
+      
+      <button type="button" onclick="exportAsPDF()">📄 Als PDF speichern</button>		
+    </form>
+	
   </div>
 
-  <script src="js/script.js"></script> 
+  <div id="pdf-container"></div>
+  
+  <script src="js/script.js"></script>
+
 </body>
 </html>
