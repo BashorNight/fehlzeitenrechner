@@ -5,23 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fehlzeitenrechner Umschulung</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-	<link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <div class="container">
-    <h2>📊 Fehlzeitenrechner für Ausbildung</h2>
+    <h2 class="header-title">
+      📊 Fehlzeitenrechner für die Ausbildung
+      <a 
+        href="readme.html" 
+        target="_blank" 
+        class="info-link"
+        title="README anzeigen"
+        onmouseover="showTooltip(event)" 
+        onmouseout="hideTooltip()"
+      >
+        <span class="info-icon">i</span>
+        <span class="readme-tooltip" id="readmeTooltip">
+            📄<strong>README</strong>         
+        </span>
+      </a>
+    </h2>
     <label>Startdatum:</label>
     <input type="date" id="start" oninput="checkDatum('start'); berechenenBtn()" />
-    <span id="startHinweis" style="color:red; display:none;">Das Startdatum darf nicht nach dem Enddatum liegen!</span>
+    <span class="hinweis" id="startHinweis">Das Startdatum darf nicht nach dem Enddatum liegen!</span>
 
     <label>Enddatum:</label>
     <input type="date" id="ende" oninput="checkDatum('ende'); berechenenBtn()" />
-    <span id="endeHinweis" style="color:red; display:none;">Das Enddatum darf nicht vor dem Startdatum liegen!</span>
+    <span class="hinweis" id="endeHinweis">Das Enddatum darf nicht vor dem Startdatum liegen!</span>
 
     <label>Fehltage bisher:</label>
     <input type="number" id="fehltage" value="" oninput="berechenenBtn()" />
 
+    <button type="button" class="reset-btn" onclick="resetEingaben()">Eingaben zurücksetzen</button>
     <button class="btnAktivieren" id="berechenenBtn" onclick="berechneFehlzeiten()" disabled >Berechnen</button>
 
     <div class="output" id="ergebnis" hidden="true" ></div>
@@ -45,12 +61,11 @@
       
       <button type="button" onclick="exportAsPDF()">📄 Als PDF speichern</button>		
     </form>
-	
+    
   </div>
 
   <div id="pdf-container"></div>
   
   <script src="js/script.js"></script>
-
 </body>
 </html>
