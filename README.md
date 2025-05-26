@@ -41,4 +41,4 @@ fehlzeitenrechner/
 │   └── style.css       # Design und Layout
 ├── js/
 │   └── script.js       # Logik zur Fehlzeitenberechnung
-└── README.md           # Diese Dokumentation
+└── README.html           # Diese Dokumentation
