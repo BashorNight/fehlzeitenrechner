@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>📆 Fehlzeitenrechner – README</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f9f9f9; color: #222; margin: 0; }
+    .container { 
+      max-width: 700px; 
+      margin: 40px auto; 
+      background: #fff; 
+      border-radius: 10px; 
+      box-shadow: 0 2px 8px #0001; 
+      padding: 2rem 2.5rem; 
+      border: 2px solid #000; /* Schwarzer Rahmen */
+    }
+    h1, h2, h3 { color: #1a73e8; }
+    blockquote { background: #fffbe6; border-left: 4px solid #fbbc04; margin: 1.5em 0; padding: 1em 1.5em; color: #555; }
+    code, pre { background: #f4f4f4; border-radius: 4px; padding: 2px 6px; font-size: 1em; }
+    ul { margin-left: 1.5em; }
+    hr { border: none; border-top: 1px solid #eee; margin: 2em 0; }
+    .struktur { background: #f1f3f4; padding: 1em; border-radius: 6px; font-family: 'Fira Mono', 'Consolas', monospace; }
+    @media (max-width: 600px) {
+      .container { padding: 1rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📆 Fehlzeitenrechner für die Ausbildung</h1>
+    <p>
+      Ein browserbasierter Rechner zur groben Ermittlung von Fehlzeiten während einer Umschulung oder Ausbildung nach IHK-Standard.<br>
+      Das Tool basiert auf allgemein bekannten IHK-Richtwerten, insbesondere der <strong>10 %-Grenze</strong> an maximal tolerierten Fehlzeiten.
+    </p>
+
+    <h2>⚠️ Rechtlicher Hinweis / Haftungsausschluss</h2>
+    <blockquote>
+      <strong>⚠️ Hinweis zur Verbindlichkeit:</strong><br>
+      Dieses Tool dient ausschließlich zur unverbindlichen Orientierung.<br>
+      Die verwendeten Richtwerte (z. B. 10 % Fehlzeitengrenze, 220 Arbeitstage pro Jahr etc.) orientieren sich an öffentlich zugänglichen Quellen und Erfahrungen, sind jedoch <strong>nicht rechtsverbindlich</strong>.<br>
+      <strong>Es besteht keine Garantie auf Vollständigkeit, Aktualität oder Richtigkeit.</strong><br>
+      Die endgültige Zulassung zur Abschlussprüfung obliegt <strong>ausschließlich der zuständigen IHK</strong>, die im Einzelfall abweichende Regelungen anwenden kann.
+    </blockquote>
+    <p>
+      Bitte kontaktiere bei Unsicherheiten immer deine zuständige IHK oder deinen Bildungsträger.
+    </p>
+
+    <hr>
+
+    <h2>🛠️ Technologien</h2>
+    <ul>
+      <li>HTML 5</li>
+      <li>CSS 3</li>
+      <li>Vanilla JavaScript</li>
+      <li>GitHub Pages (Deployment)</li>
+    </ul>
+
+    <hr>
+
+    <h2>📂 Projektstruktur</h2>
+    <pre class="struktur">
+    fehlzeitenrechner/
+    ├── index.html          # Startseite mit Eingabeformular
+    ├── css/
+    │   └── style.css       # Design und Layout
+    ├── js/
+    │   └── script.js       # Logik zur Fehlzeitenberechnung
+    └── README.html           # Diese Dokumentation
+    </pre>
+  </div>
+</body>
+</html>
