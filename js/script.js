@@ -15,7 +15,7 @@ function checkDatum(changedField) {
     // Prüfen nur wenn beide Felder ausgefüllt sind
     if (startDatum > endDatum) {
       startInput.style.border = "1px solid red";
-      startInput.value = "";
+	  startInput.value = "";
       startHinweis.style.display = "inline";
     }
   }
@@ -27,7 +27,7 @@ function checkDatum(changedField) {
     // Prüfen nur wenn beide Felder ausgefüllt sind
     if (endDatum < startDatum) {
       endInput.style.border = "1px solid red";
-      endInput.value = "";
+	  endInput.value = "";
       endeHinweis.style.display = "inline";
     }
   }
@@ -181,4 +181,23 @@ function exportAsPDF() {
   };
 
   html2pdf().set(opt).from(element).save();
+}
+
+function showTooltip(e) {
+  document.getElementById('readmeTooltip').style.display = 'block';
+}
+function hideTooltip() {
+  document.getElementById('readmeTooltip').style.display = 'none';
+}
+
+function resetEingaben() {
+  document.getElementById('start').value = '';
+  document.getElementById('ende').value = '';
+  document.getElementById('fehltage').value = '';
+  // Hinweise und Styles zurücksetzen
+  document.getElementById('startHinweis').style.display = 'none';
+  document.getElementById('endeHinweis').style.display = 'none';
+  document.getElementById('start').style.border = '';
+  document.getElementById('ende').style.border = '';
+  berechenenBtn();
 }
